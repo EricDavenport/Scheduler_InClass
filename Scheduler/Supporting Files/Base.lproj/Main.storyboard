@@ -55,12 +55,12 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gAu-Kd-unf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="ObD-mw-KGJ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1047.8260869565217" y="-518.30357142857144"/>
+            <point key="canvasLocation" x="3146" y="502"/>
         </scene>
         <!--Schedule-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ScheduleListController" customModule="Scheduler" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ScheduleListController" id="BYZ-38-t0r" customClass="ScheduleListController" customModule="Scheduler" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -123,12 +123,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1957.9710144927537" y="137.94642857142856"/>
+            <point key="canvasLocation" x="2210" y="31"/>
         </scene>
         <!--Recently Completed-->
         <scene sceneID="t5Q-F0-3MQ">
             <objects>
-                <viewController id="MBb-oG-RV7" customClass="CompletedScheduleController" customModule="Scheduler" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CompletedScheduleController" id="MBb-oG-RV7" customClass="CompletedScheduleController" customModule="Scheduler" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qus-pG-jRu">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -180,12 +180,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2kc-IQ-INB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1957.9710144927537" y="849.77678571428567"/>
+            <point key="canvasLocation" x="2209" y="955"/>
         </scene>
         <!--Schedule-->
         <scene sceneID="2cj-Ld-ler">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Wb5-Pl-S6p" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="SchedulesNavController" automaticallyAdjustsScrollViewInsets="NO" id="Wb5-Pl-S6p" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Schedule" image="calendar" catalog="system" id="9A4-x2-1uT"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="DcT-ao-UY1">
@@ -199,12 +199,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c8i-tB-Siw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1047.8260869565217" y="137.94642857142856"/>
+            <point key="canvasLocation" x="1048" y="31"/>
         </scene>
-        <!--Scheduler Tab Controller-->
+        <!--Schedules Tab Controller-->
         <scene sceneID="rS4-bV-oCS">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="qGa-aA-0QQ" customClass="SchedulerTabController" customModule="Scheduler" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="SchedulesTabController" automaticallyAdjustsScrollViewInsets="NO" id="qGa-aA-0QQ" customClass="SchedulesTabController" customModule="Scheduler" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="mmE-Ig-AdC">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -218,12 +218,12 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mEl-8h-TUR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="64" y="502"/>
+            <point key="canvasLocation" x="-112" y="502"/>
         </scene>
         <!--Completed-->
         <scene sceneID="IPp-UE-G7O">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="RDY-Vp-ifh" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="CompletedNavController" automaticallyAdjustsScrollViewInsets="NO" id="RDY-Vp-ifh" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Completed" image="text.badge.checkmark" catalog="system" id="qGH-uQ-STT"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="Z84-QJ-Pei">
@@ -237,7 +237,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4i9-uO-8JC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1048" y="850"/>
+            <point key="canvasLocation" x="1048" y="955"/>
         </scene>
     </scenes>
     <resources>

@@ -25,7 +25,7 @@ class CreateEventController: UIViewController {
     
     // set the view controller as the delegate for the text field
     eventNameTextField.delegate = self
-        
+    
     updateUI()
   }
   override func viewWillAppear(_ animated: Bool) {   // everytime vill is on the screen
@@ -36,7 +36,7 @@ class CreateEventController: UIViewController {
     super.viewWillDisappear(true)
     // TODO: call save function to persist data
   }
-   
+  
   private func updateUI() {
     if let event = event {  // coming from didSelectRowAt dor the test
       self.event = event

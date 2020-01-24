@@ -18,6 +18,7 @@
 		5779F98D23D3310F000D3444 /* CompletedScheduleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5779F98C23D3310F000D3444 /* CompletedScheduleController.swift */; };
 		57989B6923D9C02200BC195A /* FileManager+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57989B6823D9C02200BC195A /* FileManager+Extensions.swift */; };
 		57989B6B23D9C07100BC195A /* PersistenceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57989B6A23D9C07100BC195A /* PersistenceHelper.swift */; };
+		5834E12623DB596300713601 /* SchedulesTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5834E12523DB596300713601 /* SchedulesTabController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		5779F98C23D3310F000D3444 /* CompletedScheduleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedScheduleController.swift; sourceTree = "<group>"; };
 		57989B6823D9C02200BC195A /* FileManager+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Extensions.swift"; sourceTree = "<group>"; };
 		57989B6A23D9C07100BC195A /* PersistenceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceHelper.swift; sourceTree = "<group>"; };
+		5834E12523DB596300713601 /* SchedulesTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulesTabController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 		57DD381223D1C9A9003586CD /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				5834E12523DB596300713601 /* SchedulesTabController.swift */,
 				571258822385A80D00805579 /* ScheduleListController.swift */,
 				571258922385AD0100805579 /* CreateEventController.swift */,
 				5779F98C23D3310F000D3444 /* CompletedScheduleController.swift */,
@@ -196,6 +199,7 @@
 				57989B6923D9C02200BC195A /* FileManager+Extensions.swift in Sources */,
 				571258952385B4BC00805579 /* Event.swift in Sources */,
 				57989B6B23D9C07100BC195A /* PersistenceHelper.swift in Sources */,
+				5834E12623DB596300713601 /* SchedulesTabController.swift in Sources */,
 				5779F98D23D3310F000D3444 /* CompletedScheduleController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

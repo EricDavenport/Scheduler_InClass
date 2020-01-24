@@ -15,8 +15,7 @@ class ScheduleListController: UIViewController {
   // data - an array of events
   private var events = [Event]()
   
-  // public let dataPersistence = DataPersistence(filename: "schedules.plist")
-  public let dataPersistence = DataPersistence<Event>(filename: "schedules.plist")
+  public var dataPersistence: DataPersistence<Event>!
   
   private var isEditingTableView = false {
     didSet { // property observer
@@ -125,60 +124,65 @@ class ScheduleListController: UIViewController {
     present(createEventController, animated: true)
   }
 }
+
+
+// MARK:- UITableViewDataSource
+extension ScheduleListController : UITableViewDataSource {
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return events.count
+  }
   
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath)
+    let event = events[indexPath.row]
+    cell.textLabel?.text = event.name
+    cell.detailTextLabel?.text = dateFormatter.string(from: event.date)//event.date.description
+    return cell
+  }
   
-  // MARK:- UITableViewDataSource
-  extension ScheduleListController : UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-      return events.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-      let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath)
-      let event = events[indexPath.row]
-      cell.textLabel?.text = event.name
-      cell.detailTextLabel?.text = dateFormatter.string(from: event.date)//event.date.description
-      return cell
-    }
-    
-    // MARK:- deleting rows in a table view
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-      switch editingStyle {
-      case .insert:
-        // only gets called if "insertion control" exist and gets selected
-        print("inserting....")
-      case .delete:
-        print("deleting..")
-        // 1. remove item for the data model e.g events
-        events.remove(at: indexPath.row) // remove event from events array
-        
-        // remvoe item from documents directory
-        try? dataPersistence.deleteItem(at: indexPath.row)
-        
-        // 2. update the table view
-        tableView.deleteRows(at: [indexPath], with: .automatic)
-      default:
-        print("......")
-      }
-    }
-    
-    // MARK:- reordering rows in a table view
-    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-      let eventToMove = events[sourceIndexPath.row] // save the event being moved
-      events.remove(at: sourceIndexPath.row)
-      events.insert(eventToMove, at: destinationIndexPath.row)
+  // MARK:- deleting rows in a table view
+  func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    switch editingStyle {
+    case .insert:
+      // only gets called if "insertion control" exist and gets selected
+      print("inserting....")
+    case .delete:
+      print("deleting..")
+      // 1. remove item for the data model e.g events
+      events.remove(at: indexPath.row) // remove event from events array
       
-      // re-save array in docuemnts directory
-      dataPersistence.synchronize(events)
+      // remvoe item from documents directory
+      try? dataPersistence.deleteItem(at: indexPath.row)
       
-      loadItems()
+      // 2. update the table view
+      tableView.deleteRows(at: [indexPath], with: .automatic)
+    default:
+      print("......")
     }
   }
   
-  extension ScheduleListController : UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-      let event = events[indexPath.row]
-      showCreateEventVC(event)
-    }
+  // MARK:- reordering rows in a table view
+  func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+    let eventToMove = events[sourceIndexPath.row] // save the event being moved
+    events.remove(at: sourceIndexPath.row)
+    events.insert(eventToMove, at: destinationIndexPath.row)
+    
+    // re-save array in docuemnts directory
+    dataPersistence.synchronize(events)
+    
+    loadItems()
   }
+}
+
+extension ScheduleListController : UITableViewDelegate {
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    let event = events[indexPath.row]
+    showCreateEventVC(event)
+  }
+  
+  func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+    return "Completed"
+  }
+  
+}
 

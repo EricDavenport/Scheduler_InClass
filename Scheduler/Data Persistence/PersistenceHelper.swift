@@ -16,6 +16,11 @@ public enum DataPersistenceError: Error {
   case noContentsAtPath(String)
 }
 
+// step 1: custom delegation - defining the protoccol
+protocol DataPersistenceDelegate: AnyObject {
+  func didDeleteItem<T>(_ persistenceHelper: DataPersistence<T>, item: T)
+}
+
 typealias Writable = Codable & Equatable
 // typealias Codable = Encodable & Decodable
 // data persistence is now type constrained to only work with codable types clsss DataPersistence<T:Codable> { }
@@ -24,6 +29,10 @@ class DataPersistence<T: Writable> {
   private let filename: String
   
   private var items: [T]
+  
+  // step 2: custom delegation = defining a reference property that will be registered as the object listening for notifications
+  // we use weak to break strong reference cycle between the delegate object and DataPersistence class
+  weak var delegate: DataPersistenceDelegate?
   
   public init(filename: String) {
     self.filename = filename
@@ -39,6 +48,8 @@ class DataPersistence<T: Writable> {
       throw DataPersistenceError.writingError(error)
     }
   }
+  
+  // CRUD - C reate, Read, Update, Delete
   
   // Create
   public func createItem(_ item: T) throws {
@@ -84,7 +95,7 @@ class DataPersistence<T: Writable> {
   }
   
   @discardableResult  // silences the warning if the return value is not used by caller
-    public func update(_ item: T, at index: Int) -> Bool {
+  public func update(_ item: T, at index: Int) -> Bool {
     items[index] = item
     // save items to documents directory
     do {
@@ -97,9 +108,11 @@ class DataPersistence<T: Writable> {
   
   // Delete
   public func deleteItem(at index: Int) throws {
-    items.remove(at: index)
+    let deletedItem = items.remove(at: index)
     do {
       try saveItemsToDocumentsDirectory()
+      // step 3: custom delegation - use delegate reference to notify observer if deletion
+      delegate?.didDeleteItem(self, item: deletedItem)
     } catch {
       throw DataPersistenceError.deletingError
     }
